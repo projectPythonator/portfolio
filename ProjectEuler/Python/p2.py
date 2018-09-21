@@ -22,6 +22,7 @@ def get_fib_sum_iter(end_goal):
     print('the sum of he even fib numbers up to {} is {}'.format(end_goal, sum_fib))
 
 def get_fib_sum_iter_faster(end_goal):
+    ''' interesting only go over the even numbers solution i found '''
     fib3 = 2
     fib6 = 0
     result = 2
@@ -31,14 +32,13 @@ def get_fib_sum_iter_faster(end_goal):
         result = 4 * fib3 + fib6
         fib6 = fib3
         fib3 = result
-    print('the sum of he even fib numbers up to {} is {}'.format(end_goal, result))
+    print('the sum of he even fib numbers up to {} is {}'.format(end_goal, summed))
 
 
 def main():
     up_lim = 4000000
     get_fib_sum_iter        (up_lim)
-    #get_fib_sum_iter_faster (up_lim)
-    # ^^^ doesnt work in python
+    get_fib_sum_iter_faster (up_lim)
     print('the sum of he even fib numbers up to {} is {}'.format(up_lim, get_fib_sum_rec(up_lim, 1, 0)))
 
 main()

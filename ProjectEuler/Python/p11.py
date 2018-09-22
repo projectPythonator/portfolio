@@ -1,3 +1,5 @@
+''' you can also check with one for loop but i wanted to keep it quick and robust '''
+
 def sol1(grid):
   prod = 0
   for y in range(0, 20):

@@ -1,0 +1,48 @@
+import time
+from math import sqrt
+
+def gen_bit_sieve(lim):
+  lim2 = lim // 2
+  r = int(sqrt(lim)-1)//2
+  bit_sieve = [False]*lim2
+  bit_sieve[0] = True
+  for i in range(1, r+1):
+    if not bit_sieve[i]:
+      for j in range(i*(i+1)+i*(i+1), lim2, 2*i+1):
+        bit_sieve[j] = True
+  return bit_sieve
+
+def gen_sieve(lim):
+  bit_sieve = gen_bit_sieve(lim)
+  sieve = [2] + [i+i+1 for i in range((lim//2)-1) if not bit_sieve[i]]
+  return sieve
+
+def sol1(lim):
+  sieve = gen_sieve(lim)
+  squares = [2*(i**2) for i in range(1, lim)]
+  sieve_set = set(sieve)
+  for i in range(9, lim*lim, 2):
+    if i in sieve_set:
+      continue
+    works = False
+    for prime in sieve:
+      for square in squares:
+        if prime+square == i:
+          works = True
+          break
+        elif prime+square > i:
+          break
+      if prime>i:
+        break
+    if not works:
+      print('conjecture fails at {}'.format(i))
+      break
+
+
+def main():
+  a = time.clock()
+  sol1(10000)
+  b = time.clock()
+  print('time taken is {:f}'.format(b-a))
+
+main()

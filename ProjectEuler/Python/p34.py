@@ -1,4 +1,5 @@
 from math import factorial
+import time
 
 num_to_fact = {}
 def fill_dict():
@@ -31,7 +32,13 @@ def sol2(lim):
 def main():
   lim = 2540160
   fill_dict()
+  t0 = time.clock()
   sol1(lim)
+  t1 = time.clock()
+  print('time taken is {:f}'.format(t1-t0))
+  t0 = time.clock()
   sol2(lim)
+  t1 = time.clock()
+  print('time taken is {:f}'.format(t1-t0))
 main()
     

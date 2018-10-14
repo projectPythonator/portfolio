@@ -46,10 +46,18 @@ def sol1(lim):
   print('the highest phi value below {} is {}'.format(lim, ans))
 
 def sol2(lim):
-  nums = ((n/euler_phi(n), n) for n in range(2, lim))
-  ans = max(nums)
+  eulerPhi = [i for i in range(lim+1)]
+  for i in range(2, lim+1):
+    if eulerPhi[i] == i:
+      for j in range(i, lim+1, i):
+        eulerPhi[j] = (eulerPhi[j]/i)*(i-1)
+  ans = best = 0
+  for n in range(2, lim):
+    tmp = eulerPhi[n]
+    if best < (n/tmp):
+      best = n/tmp
+      ans = n
   print('the highest phi value below {} is {}'.format(lim, ans))
-  print(lim, ans[1]+2)
 
 
 
@@ -60,11 +68,11 @@ def main():
   b = time.clock()
   print('time taken is {:f}'.format(b-a))
   a = time.clock()
-  sol1(lim)
+  sol2(lim)
   b = time.clock()
   print('time taken is {:f}'.format(b-a))
   a = time.clock()
-  sol2(lim)
+  sol1(lim)
   b = time.clock()
   print('time taken is {:f}'.format(b-a))  
 main()

@@ -1,5 +1,5 @@
 """ 
-kattis hello problem
+kattis carrots problem
 Author: Agis Daniels
 Solve simple solution read the first line of input print out ignore the rest
 NOTE 
